@@ -435,7 +435,7 @@ function App() {
               <article className="reveal-up glass-panel rounded-[30px] p-8" data-reveal>
                 <p className="text-sm leading-8 text-slate-300">
                   I am a Bachelor of Science in Information Technology student
-                  with experience across design, tutoring, editing, and frontend
+                  with experience across programming, design, tutoring, video editing, and frontend
                   implementation. That mix helps me think about both function and
                   presentation, from clean code and responsive layouts to better
                   structure, visuals, and user flow.
