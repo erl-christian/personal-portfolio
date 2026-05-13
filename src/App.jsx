@@ -40,6 +40,17 @@ const strengths = [
 
 const workExperience = [
   {
+    period: "01/2026 - 04/2026",
+    title: "Technical Support Technician, OJT Trainee",
+    org: "Alturas Group of Companies",
+    location: "Tagbilaran City, Bohol",
+    details: [
+      "Provided technical support by troubleshooting hardware, software, and network issues for employees across departments.",
+      "Configured and maintained network printers and shared resources, including resolving IP and connectivity issues.",
+      "Performed basic network tasks such as checking switches and PoE, crimping Ethernet cables, and diagnosing connectivity outages.",
+    ],
+  },
+  {
     period: "2020 - 2021",
     title: "Video Editor",
     org: "Freelance",
@@ -143,7 +154,7 @@ function SectionHeading({ eyebrow, title, copy }) {
   );
 }
 
-function TimelineItem({ period, title, org, copy }) {
+function TimelineItem({ period, title, org, location, copy, details }) {
   return (
     <article className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.05]">
       <p className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">
@@ -153,7 +164,19 @@ function TimelineItem({ period, title, org, copy }) {
         {title}
       </h3>
       <p className="mt-1 text-sm font-medium text-amber-300">{org}</p>
-      <p className="mt-3 text-sm leading-7 text-slate-300">{copy}</p>
+      {location && <p className="mt-1 text-sm text-slate-400">{location}</p>}
+      {details?.length > 0 ? (
+        <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-300">
+          {details.map((item) => (
+            <li key={item} className="flex gap-3">
+              <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-cyan-300" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-3 text-sm leading-7 text-slate-300">{copy}</p>
+      )}
     </article>
   );
 }
@@ -523,22 +546,6 @@ function App() {
           </div>
         </section>
 
-        <section className="border-t border-white/10 py-24">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <SectionHeading
-              eyebrow="Skills"
-              title="My toolkit covers frontend, design, media work, and communication."
-              copy="The strongest fit is at the intersection of design thinking and implementation: shaping screens, refining the visual flow, and building usable interfaces with modern frontend tools."
-            />
-
-            <div className="grid gap-4 lg:grid-cols-3">
-              {skillGroups.map((group) => (
-                <SkillGroup key={group.title} {...group} />
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="projects" className="border-t border-white/10 py-24">
           <SectionHeading
             eyebrow="Projects"
@@ -597,6 +604,22 @@ function App() {
                 </div>
               </button>
             ))}
+          </div>
+        </section>
+
+        <section className="border-t border-white/10 py-24">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <SectionHeading
+              eyebrow="Skills"
+              title="My toolkit covers frontend, design, media work, and communication."
+              copy="The strongest fit is at the intersection of design thinking and implementation: shaping screens, refining the visual flow, and building usable interfaces with modern frontend tools."
+            />
+
+            <div className="grid gap-4 lg:grid-cols-3">
+              {skillGroups.map((group) => (
+                <SkillGroup key={group.title} {...group} />
+              ))}
+            </div>
           </div>
         </section>
 
